@@ -9,5 +9,41 @@
 <body>
 
     <button (click)="authuser('2','jihar','12345','6282325600996','1')">Hello me</button>
+    <div class='flex flex-column mt3'>
+    <input
+      class='mb2'
+      [(ngModel)]="iduser"     
+      type='text'
+      placeholder='iduser'
+    />
+    <input
+      class='mb2'
+      [(ngModel)]="username"
+      type='text'
+      placeholder='username'
+    />
+    <input
+    class='mb2'
+    [(ngModel)]="password"
+    type='password'
+    placeholder='password'
+  />
+  <input
+  class='mb2'
+  [(ngModel)]="phonenumber"
+  type='text'
+  placeholder='phonenumber'
+  />
+  <input
+  class='mb2'
+  [(ngModel)]="idmerchan"
+  type='text'
+  placeholder='idmerchan'
+  />
+  </div>
+  <button
+    (click)="Submit()">
+    Submit mutation
+  </button>
 </body>
 </html>

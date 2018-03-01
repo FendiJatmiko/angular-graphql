@@ -7,7 +7,7 @@ import { ApolloModule, Apollo } from "apollo-angular";
 import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
-const uri = 'http://localhost:9091/query';
+const uri = 'http://localhost:6060/authscure';
 
 @NgModule({
     exports: [HttpClientModule, ApolloModule, HttpLinkModule]

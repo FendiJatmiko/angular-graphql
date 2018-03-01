@@ -8,10 +8,10 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-
+import {FormsModule} from '@angular/forms';
 // Other dependencies;
 import { SqrtPipe } from './app.sqrt';
-import { AuthUser } from './authuser/authuser.component';
+import { AuthuserComponent } from './authuser/authuser.component';
 import { GraphQLModule } from './graphql.module';
 
 
@@ -19,17 +19,17 @@ import { GraphQLModule } from './graphql.module';
   declarations: [
     AppComponent,
     SqrtPipe,
-    AuthUser,
+    AuthuserComponent,
 
   ],
   imports: [
     GraphQLModule,
-  
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot([
     {
       path: 'authuser',
-      component:AuthUser
+      component:AuthuserComponent
     }
     ])
   ],
