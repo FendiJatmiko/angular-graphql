@@ -1,39 +1,35 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { ApolloModule, Apollo } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpClientModule, } from '@angular/common/http';
+
 import { NgModule } from '@angular/core';
-
-
-import { HttpClientModule } from '@angular/common/http'; 
-import { HttpModule } from '@angular/http';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-
-// Other dependencies;
-import { SqrtPipe } from './app.sqrt';
-import { AuthUser } from './authuser/authuser.component';
-import { GraphQLModule } from './graphql.module';
-
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SqrtPipe,
-    AuthUser,
-
-  ],
   imports: [
-    GraphQLModule,
-  
     BrowserModule,
-    RouterModule.forRoot([
-    {
-      path: 'authuser',
-      component:AuthUser
-    }
-    ])
+    FormsModule,
+    HttpLinkModule,
+    ApolloModule,
+    HttpClientModule
   ],
-  providers: [],
+  declarations: [AppComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(apollo: Apollo, httpLink: HttpLink) {
+    apollo.create({
+      link: httpLink.create({
+        uri: 'http://localhost:6060/authscure'
+      }),
+      cache: new InMemoryCache()
+    });
+  }
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule);
